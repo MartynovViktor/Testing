@@ -18,9 +18,9 @@ public class TestAutoRia {
     String priceTo = "100000";
     String yearFrom = "2000";
     String yearTo = "2017";
-    String currensy = "$";
+    String currensy = "$";// Только $; грн.; €
     String categories = "Легковые";
-    String newOrOldCars = "Old";
+    String newOrOldCars = "New"; // Только Old или New
 
 
 
