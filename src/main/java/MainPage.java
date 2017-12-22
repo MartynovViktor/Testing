@@ -18,10 +18,13 @@ public class MainPage {
     By priceToLocator = By.id("priceTo");
     By currencyLocator = By.id("currency");
     By categoriesLocator = By.id("categories");
-    By marksFieldLocator = By.xpath("//label[@for='brandTooltipBrandAutocompleteInput-1']");
     By searchButtonLocator = By.className("button-primary");
-    By radioButtonNew = By.id("NaRadioButton");
-    By radioButtonOld = By.id("BuRadioButton");
+    By radioButtonNewLocator = By.id("NaRadioButton");
+    By radioButtonOldLocator = By.id("BuRadioButton");
+    By marksForNewCarsLocator = By.id("marks");
+    By modelsNewLocator = By.id("models");
+    By marksForOldCars = By.id("brandTooltipBrandAutocompleteInput-1");
+    By modelsOldCar = By.xpath("//label[@for=\"brandTooltipModelAutocompleteInput-1\"]");
 
     public void setRegion(String setRegion) {
         Select select = new Select(webDriver.findElement(regionLocator));
@@ -51,13 +54,34 @@ public class MainPage {
         WebElement search = webDriver.findElement(searchButtonLocator);
         search.click();
     }
-    public void setNewCars(){
-        WebElement newCars = webDriver.findElement(radioButtonNew);
+    public void chooseNewCars(){
+        WebElement newCars = webDriver.findElement(radioButtonNewLocator);
         newCars.click();
     }
     public void setOldCars(){
-        WebElement oldCars = webDriver.findElement(radioButtonOld);
+        WebElement oldCars = webDriver.findElement(radioButtonOldLocator);
         oldCars.click();
+    }
+
+    public void setMarksForNewCars(){
+        Select select=new Select(webDriver.findElement(marksForNewCarsLocator));
+        select.selectByValue("52");
+    }
+
+    public void setModelForNewCars(){
+        Select select=new Select(webDriver.findElement(modelsNewLocator));
+        select.selectByValue("1478");
+    }
+    public void setMarksForOldCars(){
+        WebElement oldCarsMark = webDriver.findElement(marksForOldCars);
+        oldCarsMark.sendKeys("Mi");
+        webDriver.findElement(By.xpath("//ul[@class='unstyle scrollbar autocomplete-select']/li[2]")).click();
+
+    }
+    public void setModelForOldCars(){
+        WebElement oldCarsModel = webDriver.findElement(modelsOldCar);
+        oldCarsModel.click();
+        webDriver.findElement(By.xpath("//li[@data-text='L 200']")).click();
     }
 
 }
